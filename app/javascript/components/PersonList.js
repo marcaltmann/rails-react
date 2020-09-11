@@ -1,34 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Person from './Person.js';
 
-const testPeople = [
-  {
-    id: 1,
-    forename: 'Marc',
-    surname: 'Altmann',
-  },
-  {
-    id: 2,
-    forename: 'Peter',
-    surname: 'Ullrich',
-  },
-];
-
-class PersonList extends Component {
-  render() {
-    return (
-      <ul>
-        {
-          testPeople.map(person => (
-            <li key={person.id}>
-              <Person forename={person.forename} surname={person.surname} />
-            </li>
-          ))
-        }
-      </ul>
-    );
-  }
+function PersonList(props) {
+  return (
+    <ul>
+      {
+        props.list.map(person => (
+          <li key={person.id}>
+            <Person forename={person.forename} surname={person.surname} />
+          </li>
+        ))
+      }
+    </ul>
+  );
 }
+
+PersonList.propTypes = {
+  list: PropTypes.array,
+};
 
 export default PersonList;
