@@ -7,4 +7,10 @@ class HelloController < ApplicationController
 
     @props = { greeting: greeting, number: number }
   end
+
+  def api
+    people = PeopleRepository.all_people
+
+    render({ :json => people })
+  end
 end
