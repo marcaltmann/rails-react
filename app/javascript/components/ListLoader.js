@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import PersonList from './PersonList.js';
+import NewForm from './NewForm.js';
 import LoadingIndicator from './LoadingIndicator.js';
 
 class ListLoader extends Component {
@@ -12,6 +13,8 @@ class ListLoader extends Component {
       loaded: false,
       error: false,
     };
+
+    this.addPersonToList = this.addPersonToList.bind(this);
   }
 
   componentDidMount() {
@@ -23,12 +26,23 @@ class ListLoader extends Component {
       }));
   }
 
+  addPersonToList(person) {
+    this.setState(({ list: oldList }) => {
+      return {
+        list: oldList.concat(person),
+      };
+    });
+  }
+
   render() {
     return (
       <Fragment>
         {
           this.state.loaded ?
-            <PersonList list={this.state.list} /> :
+            (<Fragment>
+              <PersonList list={this.state.list} />
+              <NewForm addPerson={this.addPersonToList} />
+            </Fragment>) :
             <LoadingIndicator />
         }
       </Fragment>

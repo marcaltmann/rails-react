@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get '/api/people', to: 'hello#api'
 
+  post '/api/people', to: 'people#create'
+
   root 'hello#default'
 end

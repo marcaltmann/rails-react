@@ -6,4 +6,8 @@ class PeopleRepository
   def self.random_person
     Person.find(Person.pluck(:id).sample)
   end
+
+  def self.save_person(person)
+    person.save
+  end
 end
