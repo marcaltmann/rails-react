@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import PersonList from './PersonList.js';
 import NewForm from './NewForm.js';
@@ -41,7 +42,8 @@ class ListLoader extends Component {
           this.state.loaded ?
             (<Fragment>
               <PersonList list={this.state.list} />
-              <NewForm addPerson={this.addPersonToList} />
+              <NewForm addPerson={this.addPersonToList}
+                       authToken={this.props.authToken} />
             </Fragment>) :
             <LoadingIndicator />
         }
@@ -49,5 +51,9 @@ class ListLoader extends Component {
     );
   }
 }
+
+ListLoader.propTypes = {
+  authToken: PropTypes.string,
+};
 
 export default ListLoader;

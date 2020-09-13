@@ -23,6 +23,7 @@ class NewForm extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-CSRF-Token': this.props.authToken,
       },
       body: JSON.stringify({ forename, surname }),
     })
@@ -48,6 +49,7 @@ class NewForm extends Component {
 
 NewForm.propTypes = {
   addPerson: PropTypes.func,
+  authToken: PropTypes.string,
 };
 
 export default NewForm;

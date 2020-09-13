@@ -1,6 +1,4 @@
 class PeopleController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def create
     forename = params[:forename]
     surname = params[:surname]
